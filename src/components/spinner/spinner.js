@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
+// eslint-disable-next-line no-unused-vars
 import ReactDOM from 'react-dom';
 import './spinner.css';
 const Spinner = () => {

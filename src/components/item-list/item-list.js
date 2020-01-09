@@ -9,44 +9,48 @@ export default class ItemList extends Component {
   constructor() {
     super();
     this.state = {
-      peopleList: null
+      itemList: null
     };
-    this.swapiService = new SwapiService();
+
   }
 
   componentDidMount() {
-    this.swapiService
-      .getAllPeople()
-      .then((peopleList) => {
+
+    const { getData } = this.props;
+
+      getData()
+      .then((itemList) => {
         this.setState({
-          peopleList
+          itemList
         });
       });
   }
 
   rendeItems(arr) {
     return arr.map((person,index) => {
+      const {id} = person
+      const label = this.props.children(person)
       if(index>=5){
         return;
       }
       return(
       <li className="list-group-item"
-        key={person.id}
+        key={id}
         onClick={() => this.props.onItemSelected(person.id)}>
-        {person.name}
+        {label}
       </li>
     );
     });
   }
 
   render() {
-    const { peopleList } = this.state;
+    const { itemList } = this.state;
 
-    if (!peopleList) {
+    if (!itemList) {
       return <Spinner />;
     }
 
-    const items = this.rendeItems(peopleList);
+    const items = this.rendeItems(itemList);
     return (
       <ul className="item-list list-group">
         {items}

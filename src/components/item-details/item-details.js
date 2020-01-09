@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component, Fragment } from 'react';
 
-import './person-details.css';
+import './item-details.css';
 import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner/spinner';
 
