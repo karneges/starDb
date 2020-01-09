@@ -7,18 +7,13 @@ import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 
 import './app.css';
+import PeoplePage from '../people-page/people-page';
 
 class App extends React.Component {
   constructor(){
     super();
-    this.state = {
-      selectedPerson: null
-    };
-    this.onPersonSelected = (id) => {
-      this.setState({
-        selectedPerson: id
-      });
-    };
+
+
   }
   render() {
     return (
@@ -26,16 +21,9 @@ class App extends React.Component {
 
         <Header />
         <RandomPlanet />
-
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList onItemSelected = {
-              this.onPersonSelected} />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails  personId = {this.state.selectedPerson}/>
-          </div>
-        </div>
+        <PeoplePage/>
+        <PeoplePage/>
+        <PeoplePage/>
       </div>
     );
   }

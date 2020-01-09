@@ -45,7 +45,7 @@ export default class PersonDetails extends Component {
 
   render() {
     if (!this.state.person) {
-      return  <span>Select item</span>
+      return  <span>Select item</span>;
     }
     const { person } = this.state;
     const content =!this.isLoading ?<PersonCard person={person}/>:null;

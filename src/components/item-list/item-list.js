@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 import './item-list.css';
 import SwapiService from '../../services/swapi-service';
-// eslint-disable-next-line no-unused-vars
 import Spinner from '../spinner/spinner';
 
 export default class ItemList extends Component {
@@ -26,7 +25,10 @@ export default class ItemList extends Component {
   }
 
   rendeItems(arr) {
-    return arr.map((person) => {
+    return arr.map((person,index) => {
+      if(index>=5){
+        return;
+      }
       return(
       <li className="list-group-item"
         key={person.id}
