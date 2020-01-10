@@ -13,7 +13,7 @@ const ItemList = (props) => {
       const { id } = item;
       const label = renderLabel(item);
       if (index >= 5) {
-        return;
+        return null
       }
       return (
         <li className="list-group-item"

@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 
 import './item-details.css';
 import SwapiService from '../../services/swapi-service';
-import Spinner from '../spinner/spinner';
+// import Spinner from '../spinner/spinner';
 
 
 const Record = ({item ,field , label}) => {
@@ -37,14 +37,12 @@ export default class ItemDetails extends Component {
 
   componentDidUpdate(prevProps) {
     this.isLoading = true;
-    if (this.props.personId !== prevProps.personId) {
+    if (this.props.itemId !== prevProps.itemId) {
       this.updateItem();
     }
   }
 
   updateItem() {
-    console.log(this.props);
-    
     this.isLoading = true;
     const { itemId, getData, getImageUrl } = this.props;
     if (!itemId) {

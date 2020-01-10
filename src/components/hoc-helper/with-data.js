@@ -6,7 +6,7 @@ const withData = (View,getData) => {
       constructor() {
         super();
         this.state = {
-          itemList: null
+          data: null
         };
       }
   
