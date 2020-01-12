@@ -3,14 +3,13 @@ import React from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import './app.css';
-import { PersonList, PlanetList, StarshipList } from '../sw-components/item-lists';
-import { PersonDetails, PlanetDetails, StarshipDetails } from '../sw-components/details';
 import { SwapiServiceProvider } from '../swapi-service-context/swapi-service-context';
 import SwapiService from '../../services/swapi-service';
-import Row from '../row/row';
 import PeoplePage from '../pages/people-page';
 import PlanetPage from '../pages/planets-page';
 import StarshipPage from '../pages/starships-page';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { StarshipDetails } from '../sw-components/details';
 
 
 class App extends React.Component {
@@ -22,18 +21,30 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="stardb-app">
-        <SwapiServiceProvider value={this.swapiService}>
 
-          <Header />
+      <SwapiServiceProvider value={this.swapiService}>
+        <Router>
+          <div className="stardb-app">
+            <Header />
+            <RandomPlanet />
 
-          <RandomPlanet />
-          <PeoplePage/>
-          <PlanetPage/>
-          <StarshipPage/>
-        </SwapiServiceProvider>
+            <Route path="/" exact render={() => <h2>Welcome to StarDb!</h2>} />
+            <Route path="/people/:id?" component={PeoplePage} />
+            <Route path="/planets" component={PlanetPage} />
+            <Route path="/starships" exact component={StarshipPage} />
+            <Route path="/starships/:id" 
+              render={({ match }) => {
+                console.log(match);
+                
+                const { id } = match.params;
+                return <StarshipDetails itemId={id} />;
+              }
+              }
+            />
 
-      </div>
+          </div>
+        </Router>
+      </SwapiServiceProvider>
     );
   }
 }

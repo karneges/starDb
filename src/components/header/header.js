@@ -1,6 +1,7 @@
 // eslint-disable-jsx-a11y/href-no-hash
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import './header.css';
 
@@ -8,19 +9,19 @@ const Header = () => {
   return (
     <div className="header d-flex">
       <h3>
-        <a href="https://www.google.ru/">
+      <Link to ="/">
           Star DB
-        </a>
+          </Link>
       </h3>
       <ul className="d-flex">
         <li>
-          <a href="https://www.google.ru/">People</a>
+         <Link to ="/people/">People</Link>
         </li>
         <li>
-          <a href="https://www.google.ru/">Planets</a>
+        <Link to ="/planets/">Planets</Link>
         </li>
         <li>
-          <a href="https://www.google.ru/">Starships</a>
+        <Link to ="/starships/">Starships</Link>
         </li>
       </ul>
     </div>
