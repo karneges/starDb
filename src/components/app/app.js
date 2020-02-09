@@ -1,16 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import Header from '../header';
-import RandomPlanet from '../random-planet';
-import './app.css';
-import { SwapiServiceProvider } from '../swapi-service-context/swapi-service-context';
-import SwapiService from '../../services/swapi-service';
-import PeoplePage from '../pages/people-page';
-import PlanetPage from '../pages/planets-page';
-import StarshipPage from '../pages/starships-page';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { StarshipDetails } from '../sw-components/details';
-
+import React from "react";
+import Header from "../header";
+import RandomPlanet from "../random-planet";
+import "./app.css";
+import { SwapiServiceProvider } from "../swapi-service-context/swapi-service-context";
+import SwapiService from "../../services/swapi-service";
+import PeoplePage from "../pages/people-page";
+import PlanetPage from "../pages/planets-page";
+import StarshipPage from "../pages/starships-page";
+import { HashRouter as Router, Route } from "react-router-dom";
+import { StarshipDetails } from "../sw-components/details";
 
 class App extends React.Component {
   constructor() {
@@ -19,9 +18,7 @@ class App extends React.Component {
   }
 
   render() {
-
     return (
-
       <SwapiServiceProvider value={this.swapiService}>
         <Router>
           <div className="stardb-app">
@@ -32,16 +29,13 @@ class App extends React.Component {
             <Route path="/people/:id?" component={PeoplePage} />
             <Route path="/planets" component={PlanetPage} />
             <Route path="/starships" exact component={StarshipPage} />
-            <Route path="/starships/:id" 
+            <Route
+              path="/starships/:id"
               render={({ match }) => {
-                console.log(match);
-                
                 const { id } = match.params;
                 return <StarshipDetails itemId={id} />;
-              }
-              }
+              }}
             />
-
           </div>
         </Router>
       </SwapiServiceProvider>

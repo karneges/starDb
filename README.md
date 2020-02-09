@@ -1,5 +1,2 @@
-- Axios
-- Superagent
-- Got
-- Request
-- Reqwest
+
+StarDB is a Simple Star Wars Reference Guide
